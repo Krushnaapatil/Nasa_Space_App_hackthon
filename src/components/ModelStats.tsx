@@ -59,19 +59,19 @@ export function ModelStats({ stats }: ModelStatsProps) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-gradient-to-r from-slate-700 to-slate-800 rounded-xl p-6 text-white shadow-lg">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl p-6 text-white shadow-lg">
         <h2 className="text-2xl font-bold mb-2">Model Performance Dashboard</h2>
-        <p className="text-slate-300 text-sm">
+        <p className="text-white/90 text-sm">
           RandomForest Classifier trained on NASA Kepler/TESS data
         </p>
         <div className="mt-4 flex items-center gap-4 text-sm">
           <div>
-            <span className="text-slate-400">Total Predictions:</span>{' '}
+            <span className="text-white/80">Total Predictions:</span>{' '}
             <span className="font-bold text-white">{stats.total_predictions.toLocaleString()}</span>
           </div>
-          <div className="h-4 w-px bg-slate-600" />
+          <div className="h-4 w-px bg-white/30" />
           <div>
-            <span className="text-slate-400">Last Updated:</span>{' '}
+            <span className="text-white/80">Last Updated:</span>{' '}
             <span className="font-medium text-white">
               {new Date(stats.last_updated).toLocaleDateString()}
             </span>
@@ -83,14 +83,14 @@ export function ModelStats({ stats }: ModelStatsProps) {
         {statCards.map((stat, idx) => (
           <div
             key={idx}
-            className={`${stat.bgColor} rounded-xl p-6 border-2 border-gray-200 hover:shadow-lg transition-shadow`}
+            className="bg-gray-800 rounded-xl p-6 border-2 border-gray-700 hover:shadow-lg transition-shadow"
           >
             <div className="flex items-start justify-between mb-3">
-              <div className={`p-3 rounded-lg bg-white shadow-sm`}>
+              <div className="p-3 rounded-lg bg-gray-900 shadow-sm">
                 <stat.icon className={`w-6 h-6 ${stat.iconColor}`} />
               </div>
             </div>
-            <p className="text-sm font-medium text-gray-600 mb-1">{stat.label}</p>
+            <p className="text-sm font-medium text-gray-400 mb-1">{stat.label}</p>
             <p className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
               {stat.value}
             </p>
@@ -99,8 +99,8 @@ export function ModelStats({ stats }: ModelStatsProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-100">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Performance Metrics</h3>
+        <div className="bg-gray-800 rounded-xl shadow-md p-6 border-2 border-gray-700">
+          <h3 className="text-xl font-bold text-white mb-4">Performance Metrics</h3>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={metricsData}>
@@ -120,19 +120,19 @@ export function ModelStats({ stats }: ModelStatsProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-100">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">About the Model</h3>
-          <div className="space-y-4 text-sm text-gray-700">
+        <div className="bg-gray-800 rounded-xl shadow-md p-6 border-2 border-gray-700">
+          <h3 className="text-xl font-bold text-white mb-4">About the Model</h3>
+          <div className="space-y-4 text-sm text-gray-300">
             <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Algorithm</h4>
+              <h4 className="font-semibold text-white mb-1">Algorithm</h4>
               <p>RandomForest Classifier with 100 estimators, trained on NASA exoplanet data</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Training Data</h4>
+              <h4 className="font-semibold text-white mb-1">Training Data</h4>
               <p>Kepler, K2, and TESS mission datasets with confirmed, candidate, and false positive classifications</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Key Features</h4>
+              <h4 className="font-semibold text-white mb-1">Key Features</h4>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>Signal-to-Noise Ratio (SNR) - 28% importance</li>
                 <li>Transit Depth - 24% importance</li>
@@ -141,29 +141,29 @@ export function ModelStats({ stats }: ModelStatsProps) {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-1">Validation</h4>
+              <h4 className="font-semibold text-white mb-1">Validation</h4>
               <p>5-fold cross-validation with stratified sampling to ensure balanced class representation</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-6 border-2 border-amber-200">
-        <h3 className="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
-          <Activity className="w-5 h-5 text-amber-600" />
+      <div className="bg-gradient-to-r from-orange-900/50 to-orange-800/50 rounded-xl p-6 border-2 border-orange-700/50">
+        <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+          <Activity className="w-5 h-5 text-orange-500" />
           Model Insights
         </h3>
-        <ul className="space-y-2 text-sm text-gray-700">
+        <ul className="space-y-2 text-sm text-gray-300">
           <li className="flex items-start gap-2">
-            <span className="text-amber-600 font-bold">•</span>
+            <span className="text-orange-500 font-bold">•</span>
             <span>High SNR and clear transit depth are the strongest indicators of confirmed exoplanets</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-amber-600 font-bold">•</span>
+            <span className="text-orange-500 font-bold">•</span>
             <span>Candidates typically show moderate confidence and may require additional observation</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-amber-600 font-bold">•</span>
+            <span className="text-orange-500 font-bold">•</span>
             <span>False positives often exhibit irregular transit patterns or low signal quality</span>
           </li>
         </ul>

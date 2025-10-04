@@ -115,7 +115,7 @@ export function InputForm({ onPredict, isLoading }: InputFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {inputFields.map(field => (
           <div key={field.key}>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-300 mb-2">
               {field.label}
               {field.unit && <span className="text-gray-500 font-normal ml-1">({field.unit})</span>}
             </label>
@@ -124,15 +124,15 @@ export function InputForm({ onPredict, isLoading }: InputFormProps) {
               step={field.step}
               value={features[field.key as keyof ExoplanetFeatures]}
               onChange={(e) => handleChange(field.key as keyof ExoplanetFeatures, e.target.value)}
-              className={`w-full px-4 py-3 rounded-lg border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              className={`w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
                 errors[field.key]
-                  ? 'border-red-300 bg-red-50'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  ? 'border-red-500 bg-red-900/20 text-white'
+                  : 'border-gray-700 bg-gray-900 text-white hover:border-gray-600'
               }`}
               disabled={isLoading}
             />
             {errors[field.key] && (
-              <p className="mt-1 text-sm text-red-600">{errors[field.key]}</p>
+              <p className="mt-1 text-sm text-red-400">{errors[field.key]}</p>
             )}
             <p className="mt-1 text-xs text-gray-500">{field.description}</p>
           </div>
@@ -142,7 +142,7 @@ export function InputForm({ onPredict, isLoading }: InputFormProps) {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-indigo-700 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 shadow-lg"
+        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 shadow-lg"
       >
         {isLoading ? (
           <>

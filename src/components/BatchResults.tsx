@@ -82,7 +82,7 @@ export function BatchResults({ results }: BatchResultsProps) {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 text-white shadow-lg">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl p-6 text-white shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Batch Analysis Complete</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-white/10 rounded-lg p-4 backdrop-blur">
@@ -104,15 +104,15 @@ export function BatchResults({ results }: BatchResultsProps) {
         </div>
         <button
           onClick={handleExport}
-          className="mt-4 bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center gap-2"
+          className="mt-4 bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center gap-2"
         >
           <Download className="w-4 h-4" />
           Export Results as CSV
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-100">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">Radius vs Orbital Period</h3>
+      <div className="bg-gray-800 rounded-xl shadow-md p-6 border-2 border-gray-700">
+        <h3 className="text-xl font-bold text-white mb-4">Radius vs Orbital Period</h3>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
@@ -158,33 +158,33 @@ export function BatchResults({ results }: BatchResultsProps) {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-md p-6 border-2 border-gray-100">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">Detailed Results</h3>
+      <div className="bg-gray-800 rounded-xl shadow-md p-6 border-2 border-gray-700">
+        <h3 className="text-xl font-bold text-white mb-4">Detailed Results</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b-2 border-gray-200">
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">#</th>
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">Prediction</th>
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">Confidence</th>
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">Period (days)</th>
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">Radius (R⊕)</th>
-                <th className="text-left py-3 px-2 font-semibold text-gray-700">SNR</th>
+              <tr className="border-b-2 border-gray-700">
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">#</th>
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">Prediction</th>
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">Confidence</th>
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">Period (days)</th>
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">Radius (R⊕)</th>
+                <th className="text-left py-3 px-2 font-semibold text-gray-300">SNR</th>
               </tr>
             </thead>
             <tbody>
               {results.map((result, idx) => (
-                <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                  <td className="py-3 px-2 font-medium text-gray-600">{idx + 1}</td>
+                <tr key={idx} className="border-b border-gray-700 hover:bg-gray-700/50 transition-colors">
+                  <td className="py-3 px-2 font-medium text-gray-400">{idx + 1}</td>
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
                       {getIcon(result.prediction)}
-                      <span className="font-medium">{result.prediction}</span>
+                      <span className="font-medium text-gray-300">{result.prediction}</span>
                     </div>
                   </td>
                   <td className="py-3 px-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-16 bg-gray-200 rounded-full h-2">
+                      <div className="w-16 bg-gray-700 rounded-full h-2">
                         <div
                           className="h-2 rounded-full"
                           style={{
@@ -193,12 +193,12 @@ export function BatchResults({ results }: BatchResultsProps) {
                           }}
                         />
                       </div>
-                      <span className="font-semibold">{Math.round(result.confidence * 100)}%</span>
+                      <span className="font-semibold text-gray-300">{Math.round(result.confidence * 100)}%</span>
                     </div>
                   </td>
-                  <td className="py-3 px-2">{result.features.orbital_period.toFixed(2)}</td>
-                  <td className="py-3 px-2">{result.features.planetary_radius.toFixed(2)}</td>
-                  <td className="py-3 px-2">{result.features.snr.toFixed(1)}</td>
+                  <td className="py-3 px-2 text-gray-300">{result.features.orbital_period.toFixed(2)}</td>
+                  <td className="py-3 px-2 text-gray-300">{result.features.planetary_radius.toFixed(2)}</td>
+                  <td className="py-3 px-2 text-gray-300">{result.features.snr.toFixed(1)}</td>
                 </tr>
               ))}
             </tbody>
